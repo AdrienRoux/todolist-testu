@@ -1,12 +1,13 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Item {
 
     private String name;
     private String content;
-    private LocalDate creation_date;
+    private LocalDateTime creation_date;
 
-    Item(String name, String content, LocalDate creation_date){
+    Item(String name, String content, LocalDateTime creation_date){
         this.name = name;
         if (content.length() > 1000){
             return;
@@ -31,11 +32,11 @@ public class Item {
         this.content = content;
     }
 
-    public LocalDate getCreation_date() {
+    public LocalDateTime getCreation_date() {
         return creation_date;
     }
 
-    public void setCreation_date(LocalDate creation_date) {
+    public void setCreation_date(LocalDateTime creation_date) {
         this.creation_date = creation_date;
     }
 }

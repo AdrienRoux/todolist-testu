@@ -1,4 +1,3 @@
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class ToDoList {
@@ -13,28 +12,28 @@ public class ToDoList {
         this.IsEmailSent = false;
     }
 
-    public boolean addItem(Item item){
+    public void addItem(Item item){
 
         for (Item i : this.items)
             if (i.getName().equals(item.getName()))
-                return false;
+                return;
 
         if (items.size() >= 10)
-            return false;
+            return;
 
         if (items.size() > 0){
             Item last = items.get(items.size() -1);
-            if (last.getCreation_date().plus(30, ChronoUnit.MINUTES).compareTo(item.getCreation_date()) <= 0){
-                return false;
+            if (last.getCreation_date().plusMinutes(30).compareTo(item.getCreation_date()) <= 0){
+                return;
             }
         }
 
         this.items.add(item);
 
         if (items.size() == 8){
-            EmailSenderService.sendMail(user);
+            EmailSenderService sender = new EmailSenderService();
+            sender.sendMail(user.getEmail());
             IsEmailSent = true;
         }
-        return true;
     }
 }
