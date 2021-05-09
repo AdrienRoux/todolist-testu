@@ -39,4 +39,8 @@ public class Item {
     public void setCreation_date(LocalDateTime creation_date) {
         this.creation_date = creation_date;
     }
+
+    public boolean isValid() {
+        return this.content != null && this.getCreation_date() != null;
+    }
 }

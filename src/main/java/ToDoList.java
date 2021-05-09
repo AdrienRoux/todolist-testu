@@ -27,13 +27,19 @@ public class ToDoList {
                 return;
             }
         }
+        if(item.isValid()){
+            this.items.add(item);
+        }
 
-        this.items.add(item);
 
         if (items.size() == 8){
             EmailSenderService sender = new EmailSenderService();
             sender.sendMail(user.getEmail());
             IsEmailSent = true;
         }
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
     }
 }
